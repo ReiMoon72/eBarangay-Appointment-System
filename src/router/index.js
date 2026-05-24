@@ -9,20 +9,20 @@ const router = createRouter({
       component: () => import("../pages/Home.vue"),
     },
     {
-      path: '/navbar',
-      name: 'Navbar', 
-      component: () => import('../components/Navbar.vue')
+      path: "/navbar",
+      name: "Navbar",
+      component: () => import("../components/Navbar.vue"),
     },
     {
-      path: '/footer',
-      name: 'Footer',
-      component: () => import('../components/Footer.vue')
+      path: "/footer",
+      name: "Footer",
+      component: () => import("../components/Footer.vue"),
     },
     {
-      path: '/contact',
-      name: 'Contact',
-      component: () => import('../pages/Contact.vue')
-    }
+      path: "/contact",
+      name: "Contact",
+      component: () => import("../pages/Contact.vue"),
+    },
   ],
 });
 
