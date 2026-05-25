@@ -48,11 +48,11 @@ import {
     </div>
   </header>
 
-  <section class="font-inter p-2 text-white">
+  <section class="font-inter p-3 text-white bg-graybg">
     <div
       class="flex items-center justify-between p-3 flex-col flex-wrap gap-3 md:flex-row"
     >
-      <div class="bg-ultragray w-fit p-4 text-center">
+      <div class="bg-ultragray w-fit p-4 text-center rounded-sm">
         <div class="flex items-center justify-center">
           <File />
         </div>
@@ -62,7 +62,7 @@ import {
           Clearance Nows
         </p>
       </div>
-      <div class="bg-ultragray w-fit p-4 text-center">
+      <div class="bg-ultragray w-fit p-4 text-center rounded-sm">
         <div class="flex items-center justify-center">
           <User />
         </div>
@@ -72,7 +72,7 @@ import {
           of Indigency
         </p>
       </div>
-      <div class="bg-ultragray w-fit p-4 text-center">
+      <div class="bg-ultragray w-fit p-4 text-center rounded-sm">
         <div class="flex items-center justify-center">
           <House />
         </div>
@@ -82,7 +82,7 @@ import {
           of Residency.
         </p>
       </div>
-      <div class="bg-ultragray w-fit p-4 text-center">
+      <div class="bg-ultragray w-fit p-4 text-center rounded-sm">
         <div class="flex items-center justify-center">
           <Scroll />
         </div>
@@ -92,7 +92,7 @@ import {
           Business Permit
         </p>
       </div>
-      <div class="bg-ultragray w-fit p-4 text-center">
+      <div class="bg-ultragray w-fit p-4 text-center rounded-sm">
         <div class="flex items-center justify-center">
           <File />
         </div>
@@ -102,7 +102,7 @@ import {
           blotter Report
         </p>
       </div>
-      <div class="bg-ultragray w-fit p-4 text-center">
+      <div class="bg-ultragray w-fit p-4 text-center rounded-sm">
         <div class="flex items-center justify-center">
           <NotepadText />
         </div>
@@ -123,11 +123,11 @@ import {
     </div>
   </header>
 
-  <section class=" font-inter p-2 text-white">
+  <section class=" font-inter p-3 text-white bg-graybg">
     <div
       class="flex items-center justify-around p-3 flex-col flex-wrap gap-3 md:flex-row"
     >
-      <div class="bg-ultragray w-fit p-4 text-center">
+      <div class="bg-ultragray w-fit p-4 text-center rounded-sm">
         <div class="flex items-center justify-center">
           <Clock />
         </div>
@@ -137,7 +137,7 @@ import {
           waiting a long time
         </p>
       </div>
-      <div class="bg-ultragray w-fit p-4 text-center">
+      <div class="bg-ultragray w-fit p-4 text-center rounded-sm">
         <div class="flex items-center justify-center">
           <Anchor />
         </div>
@@ -147,7 +147,7 @@ import {
           anywhere.
         </p>
       </div>
-      <div class="bg-ultragray w-fit p-4 text-center">
+      <div class="bg-ultragray w-fit p-4 text-center rounded-sm">
         <div class="flex items-center justify-center">
           <Lock />
         </div>
@@ -157,7 +157,7 @@ import {
           is safe with us.
         </p>
       </div>
-      <div class="bg-ultragray w-fit p-4 text-center">
+      <div class="bg-ultragray w-fit p-4 text-center rounded-sm">
         <div class="flex items-center justify-center">
           <FolderCode />
         </div>

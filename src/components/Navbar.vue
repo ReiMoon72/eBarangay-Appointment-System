@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from "vue";
-import LogoWeb from "../assets/icons/Logo-web.png";
+import LogoWeb from "../assets/img/Logo-web.png";
 import { Sun, Moon } from "@lucide/vue";
 import {useRouter} from "vue-router" 
 
@@ -56,7 +56,7 @@ const BtnLogin = () => {
           Log In
         </button>
         <div class="flex items-center">
-          <button @click="toggleDark()">
+          <button class="cursor-pointer" @click="toggleDark()">
             <Sun class="duration-300 ease-in-out" v-if="DarkModeBtn" />
             <Moon class="duration-300 ease-in-out" v-else />
           </button>
