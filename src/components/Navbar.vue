@@ -1,12 +1,27 @@
 <script setup>
 import { ref } from "vue";
 import LogoWeb from "../assets/icons/Logo-web.png";
+import { Sun, Moon } from "@lucide/vue";
+import {useRouter} from "vue-router" 
 
 const logo = ref(LogoWeb);
 const NavbarShow = ref(true);
+const DarkModeBtn = ref(true);
+
+const router = useRouter();
 
 const CloseNavbar = () => {
   NavbarShow.value = !NavbarShow.value;
+};
+
+const toggleDark = () => {
+  document.documentElement.classList.toggle("dark");
+
+  DarkModeBtn.value = !DarkModeBtn.value;
+};
+
+const BtnLogin = () => {
+  router.push({ name: "Login" });
 };
 </script>
 
@@ -31,13 +46,21 @@ const CloseNavbar = () => {
         <button>How It Work</button>
         <router-link :to="{ name: 'Contact' }">Contact</router-link>
       </div>
-      <div class="p-3">
+      <div
+        class="p-2 flex items-center justify-center flex-col md:flex-row gap-3"
+      >
         <button
           class="bg-ultragray p-2 w-25 rounded-sm cursor-pointer"
           @click="BtnLogin"
         >
-          <b>Log In</b>
+          Log In
         </button>
+        <div class="flex items-center">
+          <button @click="toggleDark()">
+            <Sun class="duration-300 ease-in-out" v-if="DarkModeBtn" />
+            <Moon class="duration-300 ease-in-out" v-else />
+          </button>
+        </div>
       </div>
     </div>
     <div class="flex justify-center items-center rotate-90">

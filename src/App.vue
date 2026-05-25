@@ -9,10 +9,11 @@ import { RouterView } from "vue-router";
 </script>
 
 <template>
-
+  <div
+    class="min-h-screen bg-white dark:bg-zinc-900 text-black dark:text-white transition-colors duration-300"
+  >
     <Navbar />
     <RouterView />
     <Footer />
-
-
+  </div>
 </template>

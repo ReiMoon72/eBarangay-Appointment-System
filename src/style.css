@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Orbitron:wght@400..900&family=Pixelify+Sans:wght@400..700&family=Press+Start+2P&family=Roboto:ital,wght@0,100..900;1,100..900&family=Russo+One&display=swap");
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   /* Color */
 
@@ -18,10 +20,10 @@
 .dark .dp__theme_dark {
   --dp-background-color: #000000;
   --dp-text-color: #ffffff;
-  --dp-hover-color: #2a2a2a;
-  --dp-border-color: #333;
+  --dp-hover-color: #000000;
+  --dp-border-color: #000000;
 }
 
 .dp__theme_dark .dp__calendar {
-  background: #1f1f1f;
+  background: #000000;
 }
