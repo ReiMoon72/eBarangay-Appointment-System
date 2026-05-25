@@ -2,7 +2,7 @@
 import { ref } from "vue";
 import LogoWeb from "../assets/img/Logo-web.png";
 import { Sun, Moon } from "@lucide/vue";
-import {useRouter} from "vue-router" 
+import { useRouter } from "vue-router";
 
 const logo = ref(LogoWeb);
 const NavbarShow = ref(true);
@@ -23,26 +23,54 @@ const toggleDark = () => {
 const BtnLogin = () => {
   router.push({ name: "Login" });
 };
+
+//FAQ Scroll Down
+
+const FAQscroll = (id) => {
+  const FAQscrollDown = document.getElementById(id);
+
+  if (FAQscrollDown) {
+    FAQscrollDown.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+    });
+  }
+};
+
+const BackHome = (id) => {
+  const FAQscrollDown = document.getElementById(id);
+
+  if (FAQscrollDown) {
+    FAQscrollDown.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+    });
+  }
+};
 </script>
 
 <template>
-  <nav class="bg-grayewan p-1 text-white">
+  <nav class="top-0 sticky bg-grayewan p-1 text-white">
     <div
       class="flex items-center justify-between p-2 flex-col md:flex-row"
       v-show="NavbarShow"
     >
       <div class="flex items-center">
         <div class="flex items-center">
-          <img class="w-20 p-1" :src="logo" />
+          <img
+            class="w-20 p-1 cursor-pointer"
+            @click="BackHome('Home')"
+            :src="logo"
+          />
           <div>
             <p class="text-2xl"><b>eBarangay</b></p>
             <p>Appointment System</p>
           </div>
         </div>
       </div>
-      <div class="flex gap-6 flex-col items-center md:flex-row">
+      <div class="flex md:gap-16 gap-6 flex-col items-center md:flex-row" v-show="NavbarShow">
         <router-link to="/">Home</router-link>
-        <button>FAQ</button>
+        <button class="cursor-pointer" @click="FAQscroll('FAQS')">FAQ</button>
         <button>How It Work</button>
         <router-link :to="{ name: 'Contact' }">Contact</router-link>
       </div>
