@@ -69,10 +69,10 @@ const BackHome = (id) => {
         </div>
       </div>
       <div class="flex md:gap-16 gap-6 flex-col items-center md:flex-row" v-show="NavbarShow">
-        <router-link to="/">Home</router-link>
+        <router-link active-class=" underline" to="/">Home</router-link>
         <button class="cursor-pointer" @click="FAQscroll('FAQS')">FAQ</button>
         <button>How It Work</button>
-        <router-link :to="{ name: 'Contact' }">Contact</router-link>
+        <router-link active-class=" underline" :to="{ name: 'Contact' }">Contact</router-link>
       </div>
       <div
         class="p-2 flex items-center justify-center flex-col md:flex-row gap-3"
