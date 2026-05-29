@@ -8,56 +8,72 @@ const router = createRouter({
       name: "Home",
       component: () => import("../pages/Home.vue"),
       meta: {
-        showNavbar: true
-      }
+        showNavbar: true,
+      },
     },
     {
       path: "/navbar",
       name: "Navbar",
       component: () => import("../components/Navbar.vue"),
       meta: {
-        showNavbar: true
-      }
+        showNavbar: true,
+      },
     },
     {
       path: "/footer",
       name: "Footer",
       component: () => import("../components/Footer.vue"),
       meta: {
-        showNavbar: true
-      }
+        showNavbar: true,
+      },
     },
     {
       path: "/contact",
       name: "Contact",
       component: () => import("../pages/Contact.vue"),
       meta: {
-        showNavbar: true
-      }
-    },
-    {
-      path: "/login",
-      name: "Login",
-      component: () => import("../pages/Login.vue"),
-      meta: {
-        showNavbar: false
-      }
+        showNavbar: true,
+      },
     },
     {
       path: "/signin",
       name: "Signin",
-      component: () => import("../layouts/signin.vue"),
+      component: () => import("../pages/signin.vue"),
       meta: {
-        showNavbar: false
-      }
+        showNavbar: false,
+      },
     },
     {
       path: "/logIn",
       name: "LogIn",
-      component: () => import("../layouts/log-in.vue"),
+      component: () => import("../pages/log-in.vue"),
       meta: {
-        showNavbar: false
-      }
+        showNavbar: false,
+      },
+    },
+    {
+      path: "/admin",
+      name: "AdminLogin",
+      component: () => import("../pages/AdminRole.vue"),
+      meta: {
+        showNavbar: false,
+      },
+    },
+    {
+      path: "/userdashboard",
+      name: "UserDashboard",
+      component: () => import("../pages/UserDashBoard.vue"),
+      meta: {
+        showNavbar: false,
+      },
+    },
+    {
+      path: "/admindashboard",
+      name: "AdminDashboard",
+      component: () => import("../pages/AdminDashboard.vue"),
+      meta: {
+        showNavbar: false,
+      },
     },
   ],
 });

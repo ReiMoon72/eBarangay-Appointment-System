@@ -2,7 +2,13 @@
 import { ref } from "vue";
 import LogoIMG from "../assets/img/Logo-web.png";
 import { Calendar, ScanFace, MessageCircle, User } from "@lucide/vue";
+import { useRouter } from "vue-router";
 
+const router = useRouter();
+
+const SignUp = () =>{
+  router.push({ name: 'LogIn'})
+} 
 //For Logo
 const Logo = ref(LogoIMG);
 </script>
@@ -106,7 +112,7 @@ const Logo = ref(LogoIMG);
         </div>
         <div class=" flex items-center m-auto gap-6">
             <p>Already Have a Account?</p>
-            <button class=" text-blue-800" @click="Back">Sign In</button>
+            <button class=" text-blue-800 cursor-pointer" @click="SignUp">Sign In</button>
         </div>
       </form>
     </div>

@@ -2,11 +2,32 @@
 import { ref } from "vue";
 import FAQImage from "../assets/img/Logo-web.png";
 import { Lock } from "@lucide/vue";
+import { useRouter } from "vue-router";
 
+const router = useRouter();
 const LogoIMG = ref(FAQImage);
+
+const BackHome = () => {
+  router.push({ name: "Home" });
+};
+
+const SignUp = () => {
+  router.push({ name: "LogIn" });
+};
 </script>
 
 <template>
+  <header class="font-inter p-2 text-white">
+    <div class="p-5">
+      <button
+        class="bg-white dark:bg-ultragray text-black dark:text-white cursor-pointer"
+        @click="BackHome"
+      >
+        ← Back To Home
+      </button>
+    </div>
+  </header>
+
   <section class="font-inter p-5">
     <div class="flex items-center justify-center">
       <div
@@ -29,21 +50,18 @@ const LogoIMG = ref(FAQImage);
           <p>Enter Your Credential To Enter Your Account</p>
         </div>
         <div class="flex flex-col gap-3">
-          <label>Email Address: </label>
+          <label>Admin Email Address: </label>
           <input
             class="border-2 p-1 rounded-sm border-grayewan w-80 md:w-100"
             type="text"
-            v-model="emailAdress"
+            v-model="AdminemailAdress"
           />
-          <label>Password: </label>
+          <label>Admin Password: </label>
           <input
             class="border-2 p-1 rounded-sm border-graybg w-80 md:w-100"
             type="password"
-            v-model="passwordEmail"
+            v-model="AdminpasswordEmail"
           />
-        </div>
-        <div>
-          <button class="cursor-pointer text-blue-700">Forget Password</button>
         </div>
         <button
           class="flex items-center justify-center gap-3 rounded-sm cursor-pointer bg-blue-900 p-1.5 text-white w-80 md:w-90 m-auto"
@@ -51,8 +69,10 @@ const LogoIMG = ref(FAQImage);
           <Lock size="20" /> Sign In
         </button>
         <div class="flex gap-5 items-center justify-center m-auto">
-          <p>Don't have an account?</p>
-          <button class="cursor-pointer text-blue-600">Sign In</button>
+          <p>Not a Admin? Back in Sign Up</p>
+          <button class="cursor-pointer text-blue-600" @click="SignUp">
+            Sign Up
+          </button>
         </div>
       </form>
     </div>
