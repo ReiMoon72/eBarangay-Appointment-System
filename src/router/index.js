@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
+import { useAuthStore } from "../store/authentication";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -76,6 +77,15 @@ const router = createRouter({
       },
     },
   ],
+});
+
+router.beforeEach((to, from, next) => {
+  const auth = useAuthStore();
+
+  if (!auth.user) {
+    auth.loadUserFromStorage();
+  }
+  next();
 });
 
 export default router;

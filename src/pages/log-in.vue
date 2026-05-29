@@ -1,9 +1,16 @@
 <script setup>
 import { ref } from "vue";
+import { useAuthStore } from "../store/authentication";
 import FAQImage from "../assets/img/Logo-web.png";
 import { Lock } from "@lucide/vue";
 import { useRouter } from "vue-router";
 
+//Ref The Admin
+const emailAdress = ref("");
+const passwordEmail = ref("");
+
+//For Others
+const auth = useAuthStore();
 const router = useRouter();
 const LogoIMG = ref(FAQImage);
 
@@ -15,9 +22,33 @@ const SignUp = () => {
   router.push({ name: "Signin" });
 };
 
-const AdminLogin = () =>{
-  router.push({ name: 'AdminLogin'})
-}
+const AdminLogin = () => {
+  router.push({ name: "AdminLogin" });
+};
+
+//Log in
+
+const loginhandles = async () => {
+  try {
+    const loginProceddurre = await auth.login(
+      emailAdress.value,
+      passwordEmail.value,
+    );
+
+    const user = res.user; 
+
+    if (user.role === "admin") {
+      router.push({ name: "AdminDashboard" });
+    } else {
+      router.push({ name: "UserDashboard" });
+    }
+  } catch (error) {
+    console.error(error);
+  }
+
+  emailAdress.value = '';
+  passwordEmail.value = '';
+};
 </script>
 
 <template>
@@ -71,12 +102,14 @@ const AdminLogin = () =>{
           <button class="cursor-pointer text-blue-700">Forget Password</button>
         </div>
         <div>
-          <button class="cursor-pointer text-blue-700" @click="AdminLogin">Admin LogIn</button>
+          <button class="cursor-pointer text-blue-700" @click="AdminLogin">
+            Admin LogIn
+          </button>
         </div>
         <button
           class="flex items-center justify-center gap-3 rounded-sm cursor-pointer bg-blue-900 p-1.5 text-white w-80 md:w-90 m-auto"
-        >
-          <Lock size="20" /> Sign In
+          @click="loginhandles"
+        >Sign In
         </button>
         <div class="flex gap-5 items-center justify-center m-auto">
           <p>Don't have an account?</p>

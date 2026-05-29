@@ -1,41 +1,47 @@
 import { defineStore } from "pinia";
-import { UserLogin } from "../services/url.js";
-import router from '../router'
+import api from "../services/url";
 
-export const userAuth = defineStore("auth", {
+export const useAuthStore = defineStore("auth", {
   state: () => ({
     user: null,
-    token: localStorage.getItem("token") || null,
+    token: null,
     loading: false,
   }),
+
   actions: {
-    async loginNow(credentials) {
+    async login(email, password) {
+      this.loading = true;
+
       try {
-        this.loading = true;
-        this.error = null;
+        const res = await api.post("/login", {
+          email,
+          password,
+        });
 
-        const data = await UserLogin(credentials);
-        this.user = data.user;
-        this.token = data.token;
+        this.user = res.data.user;
+        this.token = res.data.token; // IMPORTANT FIX
 
-        localStorage.getItem("toekn", data.token);
+        localStorage.setItem("user", JSON.stringify(this.user));
+        localStorage.setItem("token", this.token);
 
-        if(data.user.role === "admin") {
-            router.push({ name: 'AdminDashboard'})
-        }else{
-            router.push({ name: "UserDashboard"})
-        }
-      } catch (error) {
-        console.error = err.response?.data?.message || "Log in Request"
+        return res.data; // return full response, not just user
+      } catch (err) {
+        throw err.response?.data?.message || "Login failed";
       } finally {
-        this.loading = false
+        this.loading = false;
       }
     },
-    logoutUser() {
-        this.user = null
-        this.token = null
-        localStorage.removeItem("token")
-        router.push({ name: "LogIn"})
-    }
+
+    logout() {
+      this.user = null;
+      localStorage.removeItem("user");
+    },
+
+    loadUserFromStorage() {
+      const data = localStorage.getItem("user");
+      if (data) {
+        this.user = JSON.parse(data);
+      }
+    },
   },
 });
