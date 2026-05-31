@@ -1,7 +1,8 @@
 <script setup>
 import { useRouter } from 'vue-router';
+import { useAuthStore }  from "../store/authentication";
 
-
+const authStore = useAuthStore();
 const router = useRouter();
 
 const BackInHome = () =>{
@@ -12,7 +13,7 @@ const BackInHome = () =>{
 
 <template>
 
-    <h1>Hello Admin</h1>
+    <h1>Hello Admin, {{ authStore.user?.Name }}</h1>
 
     <button class=" bg-blue-950 p-2 text-white" @click="BackInHome">
         Log Out

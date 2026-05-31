@@ -45,8 +45,8 @@ const router = createRouter({
       },
     },
     {
-      path: "/logIn",
-      name: "LogIn",
+      path: "/login",
+      name: "Login",
       component: () => import("../pages/log-in.vue"),
       meta: {
         showNavbar: false,
@@ -79,13 +79,21 @@ const router = createRouter({
   ],
 });
 
-router.beforeEach((to, from, next) => {
+router.beforeEach((to, from) => {
   const auth = useAuthStore();
 
   if (!auth.user) {
     auth.loadUserFromStorage();
   }
-  next();
+
+  const protectedRoutes = ["UserDashboard", "AdminDashboard"];
+  const isProtected = protectedRoutes.includes(to.name);
+
+  if (isProtected && !auth.user) {
+    return { name: "Login" }; // redirect to login if not authenticated
+  }
+
+  return true; // allow navigation
 });
 
 export default router;

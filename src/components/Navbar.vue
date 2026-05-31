@@ -21,7 +21,7 @@ const toggleDark = () => {
 };
 
 const BtnLogin = () => {
-  router.push({ name: "LogIn" });
+  router.push({ name: "Login" });
 };
 
 //FAQ Scroll Down

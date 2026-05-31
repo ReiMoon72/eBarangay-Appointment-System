@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from "vue";
-import { useAuthStore } from "../store/authentication";
+import { useAuthStore } from "../store/authentication.js";
 import FAQImage from "../assets/img/Logo-web.png";
 import { Lock } from "@lucide/vue";
 import { useRouter } from "vue-router";
@@ -35,7 +35,7 @@ const loginhandles = async () => {
       passwordEmail.value,
     );
 
-    const user = res.user; 
+    const user = loginProceddurre.user;
 
     if (user.role === "admin") {
       router.push({ name: "AdminDashboard" });
@@ -43,11 +43,11 @@ const loginhandles = async () => {
       router.push({ name: "UserDashboard" });
     }
   } catch (error) {
-    console.error(error);
+    console.error("Log In Falied Error In: ", error);
   }
 
-  emailAdress.value = '';
-  passwordEmail.value = '';
+  emailAdress.value = "";
+  passwordEmail.value = "";
 };
 </script>
 
@@ -109,7 +109,8 @@ const loginhandles = async () => {
         <button
           class="flex items-center justify-center gap-3 rounded-sm cursor-pointer bg-blue-900 p-1.5 text-white w-80 md:w-90 m-auto"
           @click="loginhandles"
-        >Sign In
+        >
+          Sign In
         </button>
         <div class="flex gap-5 items-center justify-center m-auto">
           <p>Don't have an account?</p>
