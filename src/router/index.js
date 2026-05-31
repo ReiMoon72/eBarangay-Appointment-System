@@ -76,6 +76,14 @@ const router = createRouter({
         showNavbar: false,
       },
     },
+    {
+      path: "/navbarUser",
+      name: "NavbarUser",
+      component: () => import("../components/UserNavbar.vue"),
+      meta: {
+        showNavbar: false,
+      },
+    },
   ],
 });
 

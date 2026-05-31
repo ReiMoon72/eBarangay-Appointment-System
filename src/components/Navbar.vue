@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import LogoWeb from "../assets/img/Logo-web.png";
 import { Sun, Moon } from "@lucide/vue";
 import { useRouter } from "vue-router";
@@ -15,10 +15,23 @@ const CloseNavbar = () => {
 };
 
 const toggleDark = () => {
-  document.documentElement.classList.toggle("dark");
+  const isDark = document.documentElement.classList.toggle("dark");
 
   DarkModeBtn.value = !DarkModeBtn.value;
+  localStorage.setItem("theme", isDark ? "dark" : "light");
 };
+
+onMounted(() => {
+  const savedTheme = localStorage.getItem("theme");
+
+  if (savedTheme === "dark") {
+    document.documentElement.classList.add("dark");
+    DarkModeBtn.value = false;
+  } else {
+    document.documentElement.classList.remove("dark");
+    DarkModeBtn.value = true;
+  }
+});
 
 const BtnLogin = () => {
   router.push({ name: "Login" });
@@ -68,11 +81,16 @@ const BackHome = (id) => {
           </div>
         </div>
       </div>
-      <div class="flex md:gap-16 gap-6 flex-col items-center md:flex-row" v-show="NavbarShow">
+      <div
+        class="flex md:gap-16 gap-6 flex-col items-center md:flex-row"
+        v-show="NavbarShow"
+      >
         <router-link active-class=" underline" to="/">Home</router-link>
         <button class="cursor-pointer" @click="FAQscroll('FAQS')">FAQ</button>
         <button>How It Work</button>
-        <router-link active-class=" underline" :to="{ name: 'Contact' }">Contact</router-link>
+        <router-link active-class=" underline" :to="{ name: 'Contact' }"
+          >Contact</router-link
+        >
       </div>
       <div
         class="p-2 flex items-center justify-center flex-col md:flex-row gap-3"
