@@ -63,7 +63,7 @@ const router = createRouter({
     {
       path: "/userdashboard",
       name: "UserDashboard",
-      component: () => import("../pages/UserDashBoard.vue"),
+      component: () => import("../user/UserDashBoard.vue"),
       meta: {
         showNavbar: false,
       },

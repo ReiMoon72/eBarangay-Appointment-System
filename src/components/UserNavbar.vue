@@ -57,7 +57,7 @@ onMounted(() => {
         </div>
       </div>
       <div class="flex items-center gap-5 justify-center">
-        <button>Dashboard</button>
+        <button @click="">Dashboard</button>
         <button>Book Apppointment</button>
         <button>My Appointment</button>
         <button>FAQ</button>
@@ -80,7 +80,7 @@ onMounted(() => {
           class="cursor-pointer bg-graybg p-1 text-white w-30"
           @click="backHome"
         >
-          Home
+          Logout
         </button>
         <hr class="w-fit bg-white" />
         <button
@@ -92,4 +92,5 @@ onMounted(() => {
       </div>
     </div>
   </nav>
+  <hr class=" bg-ultragray" />
 </template>

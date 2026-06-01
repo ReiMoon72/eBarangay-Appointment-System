@@ -7,7 +7,7 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 
 const SignUp = () =>{
-  router.push({ name: 'LogIn'})
+  router.push({ name: 'Login'})
 } 
 //For Logo
 const Logo = ref(LogoIMG);
