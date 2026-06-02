@@ -56,7 +56,7 @@ onMounted(() => {
           <p>Appointment System</p>
         </div>
       </div>
-      <div class="flex items-center gap-5 justify-center">
+      <div class="flex items-center gap-5 justify-center flex-col md:flex-row">
         <button @click="">Dashboard</button>
         <button>Book Apppointment</button>
         <button>My Appointment</button>
@@ -73,7 +73,7 @@ onMounted(() => {
         </div>
       </div>
       <div
-        class="bg-grayewan text-black w-40 text-center p-2 absolute right-5 top-30 md:top-20"
+        class="bg-grayewan text-black w-40 text-center p-2 absolute right-5 top-75 md:top-20"
         v-show="logoutBG"
       >
         <button
@@ -92,5 +92,5 @@ onMounted(() => {
       </div>
     </div>
   </nav>
-  <hr class=" bg-ultragray" />
+  <hr class="bg-ultragray" />
 </template>

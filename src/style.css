@@ -11,9 +11,10 @@
   --color-graybg: #262525;
   --color-ultragray: #1c1b1b;
   --color-grayewan: #313332;
+  --color-offwhite: #e6ede8;
 
-  /* Font */
-
+  /* Font & Size */
+  --text-semi: 18px;
   --font-inter: "inter", sans-serif;
 }
 
