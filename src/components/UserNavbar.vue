@@ -22,6 +22,13 @@ const backHome = () => {
   router.push({ name: "Home" });
 };
 
+const BookAPointmetn = () =>{
+  router.push({ name: 'UserBook'})
+}
+
+const DashBoard = () =>{
+  router.push({ name: 'UserDashboard'})
+}
 //Dark Mode
 
 const toggleDark = () => {
@@ -57,10 +64,10 @@ onMounted(() => {
         </div>
       </div>
       <div class="flex items-center gap-5 justify-center flex-col md:flex-row">
-        <button @click="">Dashboard</button>
-        <button>Book Apppointment</button>
-        <button>My Appointment</button>
-        <button>FAQ</button>
+        <button class="cursor-pointer" @click="DashBoard">Dashboard</button>
+        <button class="cursor-pointer" @click="BookAPointmetn">Book Apppointment</button>
+        <button class="cursor-pointer">My Appointment</button>
+        <button class="cursor-pointer">FAQ</button>
       </div>
       <div class="flex gap-5 items-center">
         <p>

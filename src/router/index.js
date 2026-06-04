@@ -71,7 +71,7 @@ const router = createRouter({
     {
       path: "/admindashboard",
       name: "AdminDashboard",
-      component: () => import("../pages/AdminDashboard.vue"),
+      component: () => import("../admin/AdminDashboard.vue"),
       meta: {
         showNavbar: false,
       },
@@ -80,6 +80,14 @@ const router = createRouter({
       path: "/navbarUser",
       name: "NavbarUser",
       component: () => import("../components/UserNavbar.vue"),
+      meta: {
+        showNavbar: false,
+      },
+    },
+    {
+      path: "/userbbok",
+      name: "UserBook",
+      component: () => import("../user/UserBook.vue"),
       meta: {
         showNavbar: false,
       },
