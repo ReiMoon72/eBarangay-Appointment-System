@@ -92,6 +92,14 @@ const router = createRouter({
         showNavbar: false,
       },
     },
+    {
+      path: "/usertime",
+      name: "UserTime",
+      component: () => import("../components/UserTIme.vue"),
+      meta: {
+        showNavbar: false,
+      },
+    },
   ],
 });
 
