@@ -100,6 +100,22 @@ const router = createRouter({
         showNavbar: false,
       },
     },
+    {
+      path: "/userInfo",
+      name: "UserInfo",
+      component: () => import("../components/UserInformation.vue"),
+      meta: {
+        showNavbar: false,
+      },
+    },
+    {
+      path: "/userconfirm",
+      name: "Confimation",
+      component: () => import("../components/Confirmation.vue"),
+      meta: {
+        showNavbar: false,
+      },
+    },
   ],
 });
 

@@ -3,28 +3,32 @@ import { ref } from "vue";
 import { VueDatePicker } from "@vuepic/vue-datepicker";
 import "@vuepic/vue-datepicker/dist/main.css";
 import { useRouter } from "vue-router";
+import UserInformation from "./UserInformation.vue";
 
 const router = useRouter();
 
 const date = ref(new Date());
+const UserInfo = ref(false);
+const DateTime = ref(true);
 
 //Btn
-const NextStep = () => {
+const PreviousBack = () => {
   router.back();
 };
 
 const NextStep = () => {
-
+  UserInfo.value = true;
+  DateTime.value = false;
 };
 </script>
 
 <template>
-  <main class="font-inter p-3">
+  <main class="font-inter p-3" v-show="DateTime">
     <div
       class="flex justify-between p-5 items-center flex-wrap flex-col gap-3 md:flex-row"
     >
       <div class="p-2">
-        <div class="p-2">
+        <div>
           <p class="text-2xl"><b>2. Choose A Date & Time</b></p>
           <p class="text-smool">
             Choose a time and date in you <br />
@@ -139,7 +143,7 @@ const NextStep = () => {
       <div>
         <button
           class="bg-blue-950 p-1.5 w-50 cursor-pointer rounded-sm text-white"
-          @click="NextStep"
+          @click="PreviousBack"
         >
           Back
         </button>
@@ -147,11 +151,17 @@ const NextStep = () => {
       <div>
         <button
           class="bg-blue-950 p-1.5 w-50 cursor-pointer rounded-sm text-white"
-          @click="PreviousBack"
+          @click="NextStep"
         >
           Next
         </button>
       </div>
+    </div>
+  </main>
+
+  <main v-show="UserInfo">
+    <div>
+      <UserInformation />
     </div>
   </main>
 </template>
