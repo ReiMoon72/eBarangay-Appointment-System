@@ -9,12 +9,12 @@ const router = useRouter();
 
 //Btn
 const GoInfo = () => {
-    Info.value = false
-    Confirm.value = true
+  Info.value = false;
+  Confirm.value = true;
 };
 
 const Back = () => {
-    router.back();
+  router.back();
 };
 </script>
 
