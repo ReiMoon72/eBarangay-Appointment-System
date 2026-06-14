@@ -1,19 +1,19 @@
 <script setup>
 import { ref } from "vue";
-import Confirmation from "./Confirmation.vue";
+import Confirmation from "../layouts/Confirmation.vue";
 import { useRouter } from "vue-router";
-import UserNavbar from "./UserNavbar.vue";
+import UserNavbar from "../components/UserNavbar.vue";
 
 const Info = ref(true);
 const router = useRouter();
 
 //Btn
 const GoInfo = () => {
-  router.push("/userconfirm");
+  router.push("/userconfirmation");
 };
 
 const Back = () => {
-  router.back();
+  router.push('/usertime');
 };
 </script>
 

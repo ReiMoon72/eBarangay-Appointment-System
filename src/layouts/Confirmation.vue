@@ -1,7 +1,28 @@
 <script setup>
 import { File } from "@lucide/vue";
 import { ref } from "vue";
-import UserNavbar from "./UserNavbar.vue";
+import UserNavbar from "../components/UserNavbar.vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+
+//Btn
+const Back = () => {
+  router.push('/userInfo')
+}
+
+//Random Number
+function GoInfo() {
+  //Generate the Random Number
+  const referenceNumbers = 'EVT- ' + Math.floor(100000 + Math.random() * 900000)
+  const NumberReference = Math.floor(100000 + Math.random() * 900000)
+
+  //Going to Save it
+  sessionStorage.setItem('referenceNumbers', referenceNumbers)
+  sessionStorage.setItem('NumberReference', NumberReference)
+
+  router.push('/confirm')
+}
 </script>
 
 <template>
@@ -18,6 +39,7 @@ import UserNavbar from "./UserNavbar.vue";
       <p>5. Confirmation</p>
     </div>
   </main>
+
   <main
     class="font-inter p-2 bg-offwhite dark:bg-grayewan text-black dark:text-white"
   >

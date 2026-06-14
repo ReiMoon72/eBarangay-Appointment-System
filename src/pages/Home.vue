@@ -135,11 +135,8 @@ const ShowFAQ5 = () => {
         <div class="flex items-center justify-center">
           <NotepadText />
         </div>
-        <p><b>Barangay Clearance</b></p>
-        <p>
-          Request Your Barangay <br />
-          Clearance Nows
-        </p>
+        <p><b>Valid ID</b></p>
+        <p>Request Your Valid ID Nows</p>
       </div>
     </div>
   </section>
@@ -207,12 +204,16 @@ const ShowFAQ5 = () => {
     </div>
   </header>
 
-  <section class=" font-inter p-5" id="FAQS">
-    <div class=" flex justify-between items-center flex-col p-3 gap-5 md:flex-row">
+  <section class="font-inter p-5" id="FAQS">
+    <div
+      class="flex justify-between items-center flex-col p-3 gap-5 md:flex-row"
+    >
       <div>
-        <img class=" md:w-150" :src="FAQ" />
+        <img class="md:w-150" :src="FAQ" />
       </div>
-      <div class="bg-grayewan text-white p-10 w-93.5 md:w-110 flex flex-col items-center justify-center rounded-sm">
+      <div
+        class="bg-grayewan text-white p-10 w-93.5 md:w-110 flex flex-col items-center justify-center rounded-sm"
+      >
         <div
           class="bg-graybg p-5 w-89.5 flex flex-col items-start justify-center gap-2"
         >

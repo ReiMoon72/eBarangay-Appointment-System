@@ -4,7 +4,7 @@ import { VueDatePicker } from "@vuepic/vue-datepicker";
 import "@vuepic/vue-datepicker/dist/main.css";
 import { useRouter } from "vue-router";
 import UserInformation from "./UserInformation.vue";
-import UserNavbar from "./UserNavbar.vue";
+import UserNavbar from "../components/UserNavbar.vue";
 
 const router = useRouter();
 

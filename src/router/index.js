@@ -95,7 +95,7 @@ const router = createRouter({
     {
       path: "/usertime",
       name: "UserTime",
-      component: () => import("../components/UserTIme.vue"),
+      component: () => import("../layouts/UserTIme.vue"),
       meta: {
         showNavbar: false,
       },
@@ -103,15 +103,15 @@ const router = createRouter({
     {
       path: "/userInfo",
       name: "UserInfo",
-      component: () => import("../components/UserInformation.vue"),
+      component: () => import("../layouts/UserInformation.vue"),
       meta: {
         showNavbar: false,
       },
     },
     {
-      path: "/userconfirm",
+      path: "/userconfirmation",
       name: "Confimation",
-      component: () => import("../components/Confirmation.vue"),
+      component: () => import("../layouts/Confirmation.vue"),
       meta: {
         showNavbar: false,
       },
@@ -119,7 +119,7 @@ const router = createRouter({
     {
       path: "/confirm",
       name: "Confirm",
-      component: () => import("../components/Confirm.vue"),
+      component: () => import("../layouts/Confirm.vue"),
       meta: {
         showNavbar: false,
       },

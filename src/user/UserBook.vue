@@ -3,7 +3,6 @@ import { ref } from "vue";
 import UserNavbar from "../components/UserNavbar.vue";
 import { File } from "@lucide/vue";
 import { useRouter } from "vue-router";
-import UserTIme from "../components/UserTIme.vue";
 
 //For Imports
 const router = useRouter();
@@ -73,13 +72,27 @@ const TimeNext = () => {
         <div class="flex gap-5 items-center">
           <File class="bg-blue-300 p-2 rounded-full" color=" blue" size=" 50" />
           <div>
-            <b>Barangay Clearance</b>
-            <p class="text-smool">Request for Barangay Clearance</p>
+            <b>Certificate of Indigency</b>
+            <p class="text-smool">Request for Certificate of Indigency</p>
           </div>
         </div>
       </div>
       <div
-        class="flex flex-col p-3 h-25 bg-offwhite dark:bg-ultragray text-black dark:text-white p-2 w-fit rounded-xl"
+        class="flex flex-col p-3 h-25 bg-offwhite dark:bg-ultragray text-black dark:text-white p-2 w-82 rounded-xl"
+      >
+        <div class="flex items-end justify-end">
+          <input type="radio" v-model="BClerance" />
+        </div>
+        <div class="flex gap-3 items-center">
+          <File class="bg-blue-300 p-2 rounded-full" color=" blue" size=" 50" />
+          <div>
+            <b>Certificate of Residency</b>
+            <p class="text-smool">Request for Certificate of Residency</p>
+          </div>
+        </div>
+      </div>
+      <div
+        class="flex flex-col p-3 h-25 bg-offwhite dark:bg-ultragray text-black dark:text-white p-2 w-80 rounded-xl"
       >
         <div class="flex items-end justify-end">
           <input type="radio" v-model="BClerance" />
@@ -87,13 +100,13 @@ const TimeNext = () => {
         <div class="flex gap-5 items-center">
           <File class="bg-blue-300 p-2 rounded-full" color=" blue" size=" 50" />
           <div>
-            <b>Barangay Clearance</b>
-            <p class="text-smool">Request for Barangay Clearance</p>
+            <b>Business Permit</b>
+            <p class="text-smool">Request for Business Permit</p>
           </div>
         </div>
       </div>
       <div
-        class="flex flex-col p-3 h-25 bg-offwhite dark:bg-ultragray text-black dark:text-white p-2 w-fit rounded-xl"
+        class="flex flex-col p-3 h-25 bg-offwhite dark:bg-ultragray text-black dark:text-white p-2 w-80 rounded-xl"
       >
         <div class="flex items-end justify-end">
           <input type="radio" v-model="BClerance" />
@@ -101,13 +114,13 @@ const TimeNext = () => {
         <div class="flex gap-5 items-center">
           <File class="bg-blue-300 p-2 rounded-full" color=" blue" size=" 50" />
           <div>
-            <b>Barangay Clearance</b>
-            <p class="text-smool">Request for Barangay Clearance</p>
+            <b>Blotter Request</b>
+            <p class="text-smool">Request for Blotter Request</p>
           </div>
         </div>
       </div>
       <div
-        class="flex flex-col p-3 h-25 bg-offwhite dark:bg-ultragray text-black dark:text-white p-2 w-fit rounded-xl"
+        class="flex flex-col p-3 h-25 bg-offwhite dark:bg-ultragray text-black dark:text-white p-2 w-80 rounded-xl"
       >
         <div class="flex items-end justify-end">
           <input type="radio" v-model="BClerance" />
@@ -115,22 +128,8 @@ const TimeNext = () => {
         <div class="flex gap-5 items-center">
           <File class="bg-blue-300 p-2 rounded-full" color=" blue" size=" 50" />
           <div>
-            <b>Barangay Clearance</b>
-            <p class="text-smool">Request for Barangay Clearance</p>
-          </div>
-        </div>
-      </div>
-      <div
-        class="flex flex-col p-3 h-25 bg-offwhite dark:bg-ultragray text-black dark:text-white p-2 w-fit rounded-xl"
-      >
-        <div class="flex items-end justify-end">
-          <input type="radio" v-model="BClerance" />
-        </div>
-        <div class="flex gap-5 items-center">
-          <File class="bg-blue-300 p-2 rounded-full" color=" blue" size=" 50" />
-          <div>
-            <b>Barangay Clearance</b>
-            <p class="text-smool">Request for Barangay Clearance</p>
+            <b>Valid ID</b>
+            <p class="text-smool">Request for Valid ID</p>
           </div>
         </div>
       </div>
