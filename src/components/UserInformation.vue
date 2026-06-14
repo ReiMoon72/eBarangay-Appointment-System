@@ -2,15 +2,14 @@
 import { ref } from "vue";
 import Confirmation from "./Confirmation.vue";
 import { useRouter } from "vue-router";
+import UserNavbar from "./UserNavbar.vue";
 
 const Info = ref(true);
-const Confirm = ref(false);
 const router = useRouter();
 
 //Btn
 const GoInfo = () => {
-  Info.value = false;
-  Confirm.value = true;
+  router.push("/userconfirm");
 };
 
 const Back = () => {
@@ -19,9 +18,22 @@ const Back = () => {
 </script>
 
 <template>
+  <UserNavbar />
+
+  <main class="font-inter p-2">
+    <div
+      class="flex justify-between items-center flex-wrap flex-col gap-3 md:flex-row p-3"
+    >
+      <p>1. Choose the service you want</p>
+      <p>2. Select Time & Date</p>
+      <p>3. Your Information</p>
+      <p>4. Review & Confirm</p>
+      <p>5. Confirmation</p>
+    </div>
+  </main>
+
   <main
     class="bg-offwhite dark:bg-graybg text-black dark:text-white p-3 m-auto rounded-sm font-inter"
-    v-show="Info"
   >
     <div>
       <div class="flex flex-col flex-wrap">
@@ -95,12 +107,6 @@ const Back = () => {
       >
         Next →
       </button>
-    </div>
-  </main>
-
-  <main v-show="Confirm">
-    <div>
-      <Confirmation />
     </div>
   </main>
 </template>

@@ -4,26 +4,39 @@ import { VueDatePicker } from "@vuepic/vue-datepicker";
 import "@vuepic/vue-datepicker/dist/main.css";
 import { useRouter } from "vue-router";
 import UserInformation from "./UserInformation.vue";
+import UserNavbar from "./UserNavbar.vue";
 
 const router = useRouter();
 
 const date = ref(new Date());
-const UserInfo = ref(false);
-const DateTime = ref(true);
 
 //Btn
 const PreviousBack = () => {
-  router.back();
+  router.push("/userbook");
 };
 
 const NextStep = () => {
-  UserInfo.value = true;
-  DateTime.value = false;
+router.push('/UserInfo')
 };
 </script>
 
 <template>
-  <main class="font-inter p-3" v-show="DateTime">
+
+  <UserNavbar />
+
+  <main class="font-inter p-2">
+    <div
+      class="flex justify-between items-center flex-wrap flex-col gap-3 md:flex-row p-3"
+    >
+      <p>1. Choose the service you want</p>
+      <p>2. Select Time & Date</p>
+      <p>3. Your Information</p>
+      <p>4. Review & Confirm</p>
+      <p>5. Confirmation</p>
+    </div>
+  </main>
+
+  <main class="font-inter p-3">
     <div
       class="flex justify-between p-5 items-center flex-wrap flex-col gap-3 md:flex-row"
     >
@@ -159,9 +172,9 @@ const NextStep = () => {
     </div>
   </main>
 
-  <main v-show="UserInfo">
+  <!-- <main v-show="UserInfo">
     <div>
       <UserInformation />
     </div>
-  </main>
+  </main> -->
 </template>

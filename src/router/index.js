@@ -85,7 +85,7 @@ const router = createRouter({
       },
     },
     {
-      path: "/userbbok",
+      path: "/userbook",
       name: "UserBook",
       component: () => import("../user/UserBook.vue"),
       meta: {
@@ -112,6 +112,14 @@ const router = createRouter({
       path: "/userconfirm",
       name: "Confimation",
       component: () => import("../components/Confirmation.vue"),
+      meta: {
+        showNavbar: false,
+      },
+    },
+    {
+      path: "/confirm",
+      name: "Confirm",
+      component: () => import("../components/Confirm.vue"),
       meta: {
         showNavbar: false,
       },

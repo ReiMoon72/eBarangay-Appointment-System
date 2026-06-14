@@ -13,13 +13,9 @@ const BClerance = ref(false);
 
 //Btn
 const TimeNext = () => {
-  TimeUser.value = true
-  ClearanceUser.value = false
+  router.push('/usertime')
 };
 
-//For v-show & v-if
-const TimeUser = ref(false);
-const ClearanceUser = ref(true);
 </script>
 
 <template>
@@ -48,7 +44,6 @@ const ClearanceUser = ref(true);
 
   <main
     class="flex flex-col items-center m-auto font-inter rounded-sm mb-5 p-5 bg-offwhite dark:bg-graybg text-black dark:text-white w-90 md:w-180"
-    v-show="ClearanceUser"
   >
     <div class="p-3 flex flex-col items-center">
       <p class="text-2xl"><b>1. Select Services</b></p>
@@ -150,9 +145,9 @@ const ClearanceUser = ref(true);
     </div>
   </main>
 
-  <main v-show="TimeUser">
+  <!-- <main v-show="TimeUser">
     <div>
       <UserTIme />
     </div>
-  </main>
+  </main> -->
 </template>
