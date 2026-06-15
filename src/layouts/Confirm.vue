@@ -38,7 +38,7 @@ onMounted(() => {
   <main class="font-inter p-2">
     <div class="flex flex-col gap-2 items-center justify-center">
       <div class="text-center">
-        <b class="text-2xl">Appointment Confirm!</b>
+        <b class="text-2xl">Appointment Confirm!!</b>
         <p class="text-smool">Your appointment has been successfully booked</p>
       </div>
       <div class=" flex flex-col gap-3 text-center bg-green-950 p-5 rounded-sm">

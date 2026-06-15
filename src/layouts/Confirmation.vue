@@ -1,28 +1,42 @@
 <script setup>
 import { File } from "@lucide/vue";
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import UserNavbar from "../components/UserNavbar.vue";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
+const SelectedService = ref("");
+const DateSelected = ref("");
+const TimeSelected = ref("");
 
 //Btn
 const Back = () => {
-  router.push('/userInfo')
-}
+  router.push("/userInfo");
+};
 
 //Random Number
 function GoInfo() {
   //Generate the Random Number
-  const referenceNumbers = 'EVT- ' + Math.floor(100000 + Math.random() * 900000)
-  const NumberReference = Math.floor(100000 + Math.random() * 900000)
+  const referenceNumbers =
+    "EVT- " + Math.floor(100000 + Math.random() * 900000);
+  const NumberReference = Math.floor(100000 + Math.random() * 900000);
 
   //Going to Save it
-  sessionStorage.setItem('referenceNumbers', referenceNumbers)
-  sessionStorage.setItem('NumberReference', NumberReference)
+  sessionStorage.setItem("referenceNumbers", referenceNumbers);
+  sessionStorage.setItem("NumberReference", NumberReference);
 
-  router.push('/confirm')
+  router.push("/confirm");
 }
+
+//The services
+onMounted(() => {
+  SelectedService.value = localStorage.getItem("ServiceSelected");
+});
+
+onMounted(() => {
+  DateSelected.value = localStorage.getItem("DatePicker");
+  TimeSelected.value = localStorage.getItem("selectedTime");
+});
 </script>
 
 <template>
@@ -56,7 +70,7 @@ function GoInfo() {
         <File color="blue" size="45" class="bg-blue-100 p-2.5 rounded-full" />
         <div>
           <b>Services</b>
-          <p>Kung ano kinuha mo</p>
+          <p>{{ SelectedService }}</p>
         </div>
       </div>
       <div
@@ -65,7 +79,10 @@ function GoInfo() {
         <File color="blue" size="45" class="bg-blue-100 p-2.5 rounded-full" />
         <div>
           <b>Date & Time</b>
-          <p>Kung ano kinuha mo</p>
+          <div class="flex flex-col">
+            <p>{{ DateSelected }}</p>
+            <p>{{ TimeSelected }}</p>
+          </div>
         </div>
       </div>
       <div

@@ -1,20 +1,36 @@
 <script setup>
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import UserNavbar from "../components/UserNavbar.vue";
 import { File } from "@lucide/vue";
 import { useRouter } from "vue-router";
 
 //For Imports
 const router = useRouter();
+const Toaster = ref(false);
 
-//Inputs
-const BClerance = ref(false);
+//for v-model 1
+const ServiceSelected = ref("");
 
-//Btn
-const TimeNext = () => {
-  router.push('/usertime')
+function TimeNext() {
+  //Storing the Radio btn value
+  localStorage.setItem("ServiceSelected", ServiceSelected.value);
+
+  //Toaster will appeard when the user is not selecting a anything
+  if (!ServiceSelected.value) {
+    Toaster.value = true;
+    setTimeout(() => {
+      Toaster.value = false;
+    }, 3000);
+  } else {
+    //Will go to the next web page
+    router.push("/usertime");
+  }
+}
+
+//It will close the toeaster
+const CloseToeaster = () => {
+  Toaster.value = false;
 };
-
 </script>
 
 <template>
@@ -28,6 +44,21 @@ const TimeNext = () => {
       </p>
     </div>
   </header>
+
+  <main
+    class="absolute top-30 right-5 bg-glass p-2 w-70 rounded shadow-lg z-50"
+    v-show="Toaster"
+  >
+    <div class="flex justify-between p-2">
+      <div class="flex flex-col p-2">
+        <b>Please Select a Service first</b>
+        <p class="text-sm">before you go into another part.</p>
+      </div>
+      <div>
+        <button class="cursor-pointer" @click="CloseToeaster">✕</button>
+      </div>
+    </div>
+  </main>
 
   <main class="font-inter p-2">
     <div
@@ -53,7 +84,11 @@ const TimeNext = () => {
         class="flex flex-col p-3 h-25 bg-offwhite dark:bg-ultragray text-black dark:text-white p-2 w-fit rounded-xl"
       >
         <div class="flex items-end justify-end">
-          <input type="radio" v-model="BClerance" />
+          <input
+            type="radio"
+            value="Barangay Clearance"
+            v-model="ServiceSelected"
+          />
         </div>
         <div class="flex gap-5 items-center">
           <File class="bg-blue-300 p-2 rounded-full" color=" blue" size=" 50" />
@@ -67,7 +102,11 @@ const TimeNext = () => {
         class="flex flex-col p-3 h-25 bg-offwhite dark:bg-ultragray text-black dark:text-white p-2 w-fit rounded-xl"
       >
         <div class="flex items-end justify-end">
-          <input type="radio" v-model="BClerance" />
+          <input
+            type="radio"
+            value="Certificate of Indigency"
+            v-model="ServiceSelected"
+          />
         </div>
         <div class="flex gap-5 items-center">
           <File class="bg-blue-300 p-2 rounded-full" color=" blue" size=" 50" />
@@ -81,7 +120,11 @@ const TimeNext = () => {
         class="flex flex-col p-3 h-25 bg-offwhite dark:bg-ultragray text-black dark:text-white p-2 w-82 rounded-xl"
       >
         <div class="flex items-end justify-end">
-          <input type="radio" v-model="BClerance" />
+          <input
+            type="radio"
+            value="Certificate of Residency"
+            v-model="ServiceSelected"
+          />
         </div>
         <div class="flex gap-3 items-center">
           <File class="bg-blue-300 p-2 rounded-full" color=" blue" size=" 50" />
@@ -95,7 +138,11 @@ const TimeNext = () => {
         class="flex flex-col p-3 h-25 bg-offwhite dark:bg-ultragray text-black dark:text-white p-2 w-80 rounded-xl"
       >
         <div class="flex items-end justify-end">
-          <input type="radio" v-model="BClerance" />
+          <input
+            type="radio"
+            value="Business Permit"
+            v-model="ServiceSelected"
+          />
         </div>
         <div class="flex gap-5 items-center">
           <File class="bg-blue-300 p-2 rounded-full" color=" blue" size=" 50" />
@@ -109,7 +156,11 @@ const TimeNext = () => {
         class="flex flex-col p-3 h-25 bg-offwhite dark:bg-ultragray text-black dark:text-white p-2 w-80 rounded-xl"
       >
         <div class="flex items-end justify-end">
-          <input type="radio" v-model="BClerance" />
+          <input
+            type="radio"
+            value="Blotter Request"
+            v-model="ServiceSelected"
+          />
         </div>
         <div class="flex gap-5 items-center">
           <File class="bg-blue-300 p-2 rounded-full" color=" blue" size=" 50" />
@@ -123,7 +174,7 @@ const TimeNext = () => {
         class="flex flex-col p-3 h-25 bg-offwhite dark:bg-ultragray text-black dark:text-white p-2 w-80 rounded-xl"
       >
         <div class="flex items-end justify-end">
-          <input type="radio" v-model="BClerance" />
+          <input type="radio" value="Valid ID" v-model="ServiceSelected" />
         </div>
         <div class="flex gap-5 items-center">
           <File class="bg-blue-300 p-2 rounded-full" color=" blue" size=" 50" />
@@ -143,10 +194,4 @@ const TimeNext = () => {
       </button>
     </div>
   </main>
-
-  <!-- <main v-show="TimeUser">
-    <div>
-      <UserTIme />
-    </div>
-  </main> -->
 </template>
