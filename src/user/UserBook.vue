@@ -20,7 +20,7 @@ function TimeNext() {
     Toaster.value = true;
     setTimeout(() => {
       Toaster.value = false;
-    }, 3000);
+    }, 5000);
   } else {
     //Will go to the next web page
     router.push("/usertime");

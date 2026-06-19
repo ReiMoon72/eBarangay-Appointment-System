@@ -3,12 +3,46 @@ import { ref } from "vue";
 import LogoIMG from "../assets/img/Logo-web.png";
 import { Calendar, ScanFace, MessageCircle, User } from "@lucide/vue";
 import { useRouter } from "vue-router";
+import { createUser } from "../services/url.js";
 
 const router = useRouter();
 
-const SignUp = () =>{
-  router.push({ name: 'Login'})
-} 
+//For the Sign in
+const Fullname = ref("");
+const email = ref("");
+const PhoneNumber = ref("");
+const passwordEmail = ref("");
+const Confirmpassword = ref("");
+
+const SignUp = () => {
+  router.push({ name: "Login" });
+};
+
+//Sign In Logic
+const SignInBTn = async () => {
+  try {
+    //Confirming Pasword
+    if (passwordEmail.value !== Confirmpassword.value) {
+      alert("The password Doesn't match");
+    }
+    const res = await createUser.post("/signin", {
+      Fullname: Fullname.value,
+      email: email.value,
+      PhoneNumber: PhoneNumber.value,
+      passwordEmail: passwordEmail.value,
+    });
+
+    Fullname.value = "";
+    email.value = "";
+    PhoneNumber.value = "";
+    passwordEmail.value = "";
+
+    router.push("/login");
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 //For Logo
 const Logo = ref(LogoIMG);
 </script>
@@ -72,19 +106,19 @@ const Logo = ref(LogoIMG);
         <input
           class="border-2 p-1 rounded-sm border-grayewan w-85 md:w-100"
           type="text"
-          v-model="emailAdress"
+          v-model="Fullname"
         />
         <label>Email Address: </label>
         <input
           class="border-2 p-1 rounded-sm border-grayewan w-85 md:w-100"
           type="text"
-          v-model="emailAdress"
+          v-model="email"
         />
         <label>Phone Number: </label>
         <input
           class="border-2 p-1 rounded-sm border-graybg w-85 md:w-100"
-          type="password"
-          v-model="passwordEmail"
+          type="number"
+          v-model="PhoneNumber"
         />
         <label>Password: </label>
         <input
@@ -106,13 +140,16 @@ const Logo = ref(LogoIMG);
           </div>
           <button
             class="bg-blue-800 flex items-center p-1.5 w-85 md:w-100 justify-center text-white cursor-pointer"
+            @click="SignInBTn"
           >
             <User /> Sign Up
           </button>
         </div>
-        <div class=" flex items-center m-auto gap-6">
-            <p>Already Have a Account?</p>
-            <button class=" text-blue-800 cursor-pointer" @click="SignUp">Sign In</button>
+        <div class="flex items-center m-auto gap-6">
+          <p>Already Have a Account?</p>
+          <button class="text-blue-800 cursor-pointer" @click="SignUp">
+            Sign In
+          </button>
         </div>
       </form>
     </div>

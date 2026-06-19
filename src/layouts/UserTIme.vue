@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { VueDatePicker } from "@vuepic/vue-datepicker";
 import "@vuepic/vue-datepicker/dist/main.css";
 import { useRouter } from "vue-router";
@@ -11,6 +11,13 @@ const DatePicker = ref(new Date());
 const Toaster = ref(false);
 const selectedTime = ref('');
 
+const formattedDate = computed(() => {
+  if (!DatePicker.value) return '';
+  const d = new Date(DatePicker.value);
+  return d.toISOString().split('T')[0]; // Returns YYYY-MM-DD
+});
+
+
 //Btn
 const PreviousBack = () => {
   router.push("/userbook");
@@ -18,7 +25,7 @@ const PreviousBack = () => {
 
 function NextStep() {
   //Stororight the time and Date
-  localStorage.setItem("DatePicker", DatePicker.value);
+  localStorage.setItem("DatePicker", formattedDate.value);
   localStorage.setItem("selectedTime", selectedTime.value);
 
   if (!DatePicker.value || !selectedTime.value) {
@@ -59,8 +66,8 @@ function Time(time) {
   >
     <div class="flex justify-between p-2">
       <div class="flex flex-col p-2">
-        <b>Please Select a Service first</b>
-        <p class="text-sm">before you go into another part.</p>
+        <b>Please Select a Date or Time</b>
+        <p class="text-sm">Before you go in Information</p>
       </div>
       <div>
         <button class="cursor-pointer" @click="CloseToeaster">✕</button>
@@ -99,103 +106,103 @@ function Time(time) {
         >
           <button
             class="bg-blue-800 text-white w-30 p-2 rounded-sm cursor-pointer"
-            @click="Time('8:00')"
+            @click="Time('08:00:00')"
           >
             8:00 AM
           </button>
           <button
             class="bg-blue-800 text-white w-30 p-2 rounded-sm cursor-pointer"
-            @click="Time('8:30')"
+            @click="Time('08:30:00')"
           >
             8:30 AM
           </button>
           <button
             class="bg-blue-800 text-white w-30 p-2 rounded-sm cursor-pointer"
-            @click="Time('9:00')"
+            @click="Time('09:00:00')"
           >
             9:00 AM
           </button>
           <button
             class="bg-blue-800 text-white w-30 p-2 rounded-sm cursor-pointer"
-            @click="Time('9:30')"
+            @click="Time('09:30:00')"
           >
             9:30 AM
           </button>
           <button
             class="bg-blue-800 text-white w-30 p-2 rounded-sm cursor-pointer"
-            @click="Time('10:00')"
+            @click="Time('10:00:00')"
           >
             10:00 AM
           </button>
           <button
             class="bg-blue-800 text-white w-30 p-2 rounded-sm cursor-pointer"
-            @click="Time('10:30')"
+            @click="Time('10:30:00')"
           >
             10:30 AM
           </button>
           <button
             class="bg-blue-800 text-white w-30 p-2 rounded-sm cursor-pointer"
-            @click="Time('11:00')"
+            @click="Time('11:00:00')"
           >
             11:00 AM
           </button>
           <button
             class="bg-blue-800 text-white w-30 p-2 rounded-sm cursor-pointer"
-            @click="Time('11:30')"
+            @click="Time('11:30:00')"
           >
             11:30 AM
           </button>
           <button
             class="bg-blue-800 text-white w-30 p-2 rounded-sm cursor-pointer"
-            @click="Time('1:00')"
+            @click="Time('13:00:00')"
           >
             1:00 AM
           </button>
           <button
             class="bg-blue-800 text-white w-30 p-2 rounded-sm cursor-pointer"
-            @click="Time('1:30')"
+            @click="Time('13:30:00')"
           >
             1:30 AM
           </button>
           <button
             class="bg-blue-800 text-white w-30 p-2 rounded-sm cursor-pointer"
-            @click="Time('2:00')"
+            @click="Time('14:00:00')"
           >
             2:00 AM
           </button>
           <button
             class="bg-blue-800 text-white w-30 p-2 rounded-sm cursor-pointer"
-            @click="Time('2:30')"
+            @click="Time('14:30:00')"
           >
             2:30 AM
           </button>
           <button
             class="bg-blue-800 text-white w-30 p-2 rounded-sm cursor-pointer"
-            @click="Time('3:00')"
+            @click="Time('15:00:00')"
           >
             3:00 AM
           </button>
           <button
             class="bg-blue-800 text-white w-30 p-2 rounded-sm cursor-pointer"
-            @click="Time('3:30')"
+            @click="Time('15:30:00')"
           >
             3:30 AM
           </button>
           <button
             class="bg-blue-800 text-white w-30 p-2 rounded-sm cursor-pointer"
-            @click="Time('4:30')"
+            @click="Time('16:00:00')"
           >
             4:00 AM
           </button>
           <button
             class="bg-blue-800 text-white w-30 p-2 rounded-sm cursor-pointer"
-            @click="Time('8:00')"
+            @click="Time('16:30:00')"
           >
             4:30 AM
           </button>
           <button
             class="bg-blue-800 text-white w-30 p-2 rounded-sm cursor-pointer"
-            @click="Time('5:00')"
+            @click="Time('17:00:00')"
           >
             5:00 AM
           </button>

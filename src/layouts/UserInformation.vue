@@ -6,14 +6,42 @@ import UserNavbar from "../components/UserNavbar.vue";
 
 const Info = ref(true);
 const router = useRouter();
+//For Toaster
+const Toaster = ref(false);
+const Fullname = ref("");
+const phoneNumber = ref("");
+const EmailAdd = ref("");
+const BarangayAddress = ref("");
+const PurposeDetail = ref("");
 
 //Btn
-const GoInfo = () => {
-  router.push("/userconfirmation");
-};
+function GoInfo() {
+  //localstorage for the Fullname, PhoneNumber, EmailAdd, BarangayAddress, and PurposeDetail.
+
+  localStorage.setItem("Fullname", Fullname.value);
+  localStorage.setItem("phoneNumber", phoneNumber.value);
+  localStorage.setItem("EmailAdd", EmailAdd.value);
+  localStorage.setItem("BarangayAddress", BarangayAddress.value);
+  localStorage.setItem("PurposeDetail", PurposeDetail.value);
+
+  if (
+    !Fullname.value ||
+    !phoneNumber.value ||
+    !EmailAdd.value.includes("@") ||
+    !BarangayAddress.value||
+    !PurposeDetail.value
+  ) {
+    Toaster.value = true;
+    setTimeout(() => {
+      Toaster.value = false;
+    }, 3000);
+  } else {
+    router.push("/userconfirmation");
+  }
+}
 
 const Back = () => {
-  router.push('/usertime');
+  router.push("/usertime");
 };
 </script>
 
@@ -29,6 +57,21 @@ const Back = () => {
       <p>3. Your Information</p>
       <p>4. Review & Confirm</p>
       <p>5. Confirmation</p>
+    </div>
+  </main>
+
+  <main
+    class="absolute top-40 right-5 bg-glass p-2 w-70 rounded shadow-lg z-50 text-white"
+    v-show="Toaster"
+  >
+    <div class="flex justify-between p-2">
+      <div class="flex flex-col p-2">
+        <b>Please Select a Date or Time</b>
+        <p class="text-sm">Before you go in Information</p>
+      </div>
+      <div>
+        <button class="cursor-pointer" @click="CloseToeaster">✕</button>
+      </div>
     </div>
   </main>
 
@@ -50,6 +93,7 @@ const Back = () => {
             <input
               type="text"
               class="border-2 border-grayewan dark:border-white rounded-sm p-1"
+              v-model="Fullname"
               placeholder="Maria Santos"
             />
           </div>
@@ -58,6 +102,7 @@ const Back = () => {
             <input
               type="number"
               class="border-2 border-grayewan dark:border-white rounded-sm p-1"
+              v-model="phoneNumber"
               placeholder="09123456789"
             />
           </div>
@@ -66,6 +111,7 @@ const Back = () => {
             <input
               type="email"
               class="border-2 border-grayewan dark:border-white rounded-sm p-1"
+              v-model="EmailAdd"
               placeholder="hotdog@email.com"
             />
           </div>
@@ -79,6 +125,7 @@ const Back = () => {
             <input
               type="text"
               class="border-2 border-grayewan dark:border-white rounded-sm w-full p-1"
+              v-model="BarangayAddress"
               placeholder="123 Barangay Sucat, Muntinlupa City"
             />
           </div>
@@ -89,6 +136,7 @@ const Back = () => {
             <label>Purpose/Details</label>
             <textarea
               class="border-2 border-grayewan dark:border-white rounded-sm field-sizing-content min-h-20 w-full p-1"
+              v-model="PurposeDetail"
             ></textarea>
           </div>
         </div>

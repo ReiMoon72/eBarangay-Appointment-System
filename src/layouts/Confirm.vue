@@ -13,6 +13,10 @@ const Back = () => {
   router.push("/userconfirmation");
 };
 
+const SubmitBtn = () =>{
+  router.push('/userdashboard')
+}
+
 //Getting the Random Numbers
 
 onMounted(() => {
@@ -68,7 +72,7 @@ onMounted(() => {
         class="bg-blue-950 p-1.5 w-50 cursor-pointer rounded-sm text-white"
         @click="SubmitBtn"
       >
-        Submit
+        Confirm
       </button>
     </div>
   </main>

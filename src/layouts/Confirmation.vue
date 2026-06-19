@@ -3,11 +3,18 @@ import { File } from "@lucide/vue";
 import { ref, onMounted } from "vue";
 import UserNavbar from "../components/UserNavbar.vue";
 import { useRouter } from "vue-router";
+import { UserServicesAPi } from "../services/url.js";
+// import axios from "axios";
 
 const router = useRouter();
 const SelectedService = ref("");
 const DateSelected = ref("");
 const TimeSelected = ref("");
+const fullName = ref("");
+const PhoneNumber = ref("");
+const emailaddress = ref("");
+const barangayAdd = ref("");
+const purpose = ref("");
 
 //Btn
 const Back = () => {
@@ -15,7 +22,7 @@ const Back = () => {
 };
 
 //Random Number
-function GoInfo() {
+const GoInfo = async () => {
   //Generate the Random Number
   const referenceNumbers =
     "EVT- " + Math.floor(100000 + Math.random() * 900000);
@@ -25,17 +32,41 @@ function GoInfo() {
   sessionStorage.setItem("referenceNumbers", referenceNumbers);
   sessionStorage.setItem("NumberReference", NumberReference);
 
-  router.push("/confirm");
-}
+  try {
+    await UserServicesAPi.post("/userconfirmation", {
+      fullName: fullName.value,
+      DateSelected: DateSelected.value,
+      SelectedService: SelectedService.value,
+      TimeSelected: TimeSelected.value,
+      purpose: purpose.value,
+      barangayAdd: barangayAdd.value,
+      PhoneNumber: PhoneNumber.value,
+      emailaddress: emailaddress.value,
+    });
+    router.push("/confirm");
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 //The services
 onMounted(() => {
   SelectedService.value = localStorage.getItem("ServiceSelected");
 });
 
+//Date & TIme
 onMounted(() => {
   DateSelected.value = localStorage.getItem("DatePicker");
   TimeSelected.value = localStorage.getItem("selectedTime");
+});
+
+//Personal Info
+onMounted(() => {
+  fullName.value = localStorage.getItem("Fullname");
+  PhoneNumber.value = localStorage.getItem("phoneNumber");
+  emailaddress.value = localStorage.getItem("EmailAdd");
+  barangayAdd.value = localStorage.getItem("BarangayAddress");
+  purpose.value = localStorage.getItem("PurposeDetail");
 });
 </script>
 
@@ -91,7 +122,7 @@ onMounted(() => {
         <File color="blue" size="45" class="bg-blue-100 p-2.5 rounded-full" />
         <div>
           <b>Location</b>
-          <p>Kung ano kinuha mo</p>
+          <p>{{ barangayAdd }}</p>
         </div>
       </div>
       <div
@@ -100,7 +131,13 @@ onMounted(() => {
         <File color="blue" size="45" class="bg-blue-100 p-2.5 rounded-full" />
         <div>
           <b>Your Informations</b>
-          <p>Kung ano kinuha mo</p>
+          <div class="flex flex-row gap-3">
+            <p>{{ fullName }}</p>
+            <p>{{ PhoneNumber }}</p>
+          </div>
+          <div>
+            <p>{{ emailaddress }}</p>
+          </div>
         </div>
       </div>
       <div
@@ -109,7 +146,7 @@ onMounted(() => {
         <File color="blue" size="45" class="bg-blue-100 p-2.5 rounded-full" />
         <div>
           <b>Additional Information</b>
-          <p>Kung ano kinuha mo</p>
+          <p>{{ purpose }}</p>
         </div>
       </div>
     </div>

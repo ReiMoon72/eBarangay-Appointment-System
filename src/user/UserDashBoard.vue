@@ -8,20 +8,6 @@ import { appointmentApi } from "../services/url.js";
 
 const router = useRouter();
 const authStore = useAuthStore();
-// const AppointmentsSers = ref([]);
-
-// const getServiceAppoint = async () => {
-//   try {
-//     const response = await appointmentApi.get(`/appoint/user/${authStore.user?.name}`);
-//     AppointmentsSers.value = response.data;
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-
-// onMounted(() => {
-//   getServiceAppoint();
-// });
 </script>
 
 <template>
