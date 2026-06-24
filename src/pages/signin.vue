@@ -32,12 +32,13 @@ const SignInBTn = async () => {
       passwordEmail: passwordEmail.value,
     });
 
+    localStorage.setItem("token", res.data.token);
+
+    router.push("/login");
     Fullname.value = "";
     email.value = "";
     PhoneNumber.value = "";
     passwordEmail.value = "";
-
-    router.push("/login");
   } catch (error) {
     console.log(error);
   }

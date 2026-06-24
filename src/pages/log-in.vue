@@ -37,8 +37,8 @@ const loginhandles = async () => {
 
     const user = loginProceddurre.user;
 
-    if (user.role === "admin") {
-      router.push({ name: "AdminDashboard" });
+    if(user.role === "admin") {
+      router.push({ name: 'AdminDashboard'});
     } else {
       router.push({ name: "UserDashboard" });
     }
