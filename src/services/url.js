@@ -4,10 +4,7 @@ const api = axios.create({
   baseURL: "/api/auth",
 });
 
-const appointmentApi = axios.create({
-  baseURL: "/api",
-});
-
+//For the service book
 const UserServicesAPi = axios.create({
   baseURL: "/api",
 });
@@ -21,6 +18,18 @@ const createUser = axios.create({
   baseURL: "/api",
 });
 
+//For fetch the latest Appointment by the user
+const AppointmentFetch = axios.create({
+  baseURL: '/api/userdashboard'
+})
+
+//Fetch ALL of the appointment of the user
+const AppointmentGetAll = axios.create({
+  baseURL: '/api/viewappoiintment'
+})
+
+//For next one, if it was not showing plese add the variable to addTokenInterceptor, make it and add the variable inside of it and it will show the text for sure.
+
 createUser.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");
 
@@ -31,5 +40,25 @@ createUser.interceptors.request.use((config) => {
   return config;
 });
 
-export { api, appointmentApi, UserServicesAPi, fetchAppoint, createUser };
+// INTERCEPTOR FUNCTION
+const addTokenInterceptor = (axiosInstance) => {
+  axiosInstance.interceptors.request.use((config) => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    } else {
+      console.log("  - ❌ WARNING: No token found!");
+    }
+
+    return config;
+  });
+};
+
+// APPLY INTERCEPTOR TO ALL INSTANCES THAT NEED IT
+addTokenInterceptor(AppointmentFetch);
+addTokenInterceptor(UserServicesAPi); 
+addTokenInterceptor(createUser);
+addTokenInterceptor(AppointmentGetAll);
+
+export { api, AppointmentFetch, UserServicesAPi, fetchAppoint, createUser, AppointmentGetAll };
 export default api;

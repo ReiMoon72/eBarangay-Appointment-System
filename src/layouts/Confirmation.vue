@@ -23,6 +23,20 @@ const Back = () => {
 
 //Random Number
 const GoInfo = async () => {
+  const token = localStorage.getItem("token");
+
+  if (token) {
+    // Decode the token (don't verify, just decode)
+    const parts = token.split(".");
+    if (parts.length === 3) {
+      try {
+        const payload = JSON.parse(atob(parts[1]));
+      } catch (e) {
+        console.error("Failed to decode token:", e);
+      }
+    }
+  }
+
   //Generate the Random Number
   const referenceNumbers =
     "EVT- " + Math.floor(100000 + Math.random() * 900000);
@@ -33,7 +47,7 @@ const GoInfo = async () => {
   sessionStorage.setItem("NumberReference", NumberReference);
 
   try {
-    await UserServicesAPi.post("/userconfirmation", {
+    const res = await UserServicesAPi.post("/userconfirmation", {
       fullName: fullName.value,
       DateSelected: DateSelected.value,
       SelectedService: SelectedService.value,

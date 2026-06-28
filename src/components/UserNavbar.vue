@@ -29,8 +29,17 @@ const BookAPointmetn = () =>{
 const DashBoard = () =>{
   router.push({ name: 'UserDashboard'})
 }
-//Dark Mode
 
+//For Viewing All The Appointment
+const ViewAllAppointment = () =>{
+  router.push({ name: 'ViewAppointment'})
+}
+
+//For the USer FAQ
+const UserFAQS = () =>{
+  router.push({ name: 'UserFAQ'})
+}
+//Dark Mode
 const toggleDark = () => {
   const isDark = document.documentElement.classList.toggle("dark");
 
@@ -66,8 +75,8 @@ onMounted(() => {
       <div class="flex items-center gap-5 justify-center flex-col md:flex-row">
         <button class="cursor-pointer" @click="DashBoard">Dashboard</button>
         <button class="cursor-pointer" @click="BookAPointmetn">Book Apppointment</button>
-        <button class="cursor-pointer">My Appointment</button>
-        <button class="cursor-pointer">FAQ</button>
+        <button class="cursor-pointer" @click="ViewAllAppointment">My Appointment</button>
+        <button class="cursor-pointer" @click="UserFAQS">FAQ</button>
       </div>
       <div class="flex gap-5 items-center">
         <p>

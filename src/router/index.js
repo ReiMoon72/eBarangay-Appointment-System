@@ -37,6 +37,22 @@ const router = createRouter({
       },
     },
     {
+      path: "/forgotpassword",
+      name: "ForgotPassword",
+      component: () => import("../pages/ForgotPassword.vue"),
+      meta: {
+        showNavbar: true,
+      },
+    },
+    {
+      path: "/emailconfirmation",
+      name: "emailconfirmation",
+      component: () => import("../pages/EmailConfirmation.vue"),
+      meta: {
+        showNavbar: true,
+      },
+    },
+    {
       path: "/signin",
       name: "Signin",
       component: () => import("../pages/signin.vue"),
@@ -120,6 +136,22 @@ const router = createRouter({
       path: "/confirm",
       name: "Confirm",
       component: () => import("../layouts/Confirm.vue"),
+      meta: {
+        showNavbar: false,
+      },
+    },
+    {
+      path: "/viewappoiintment",
+      name: "ViewAppointment",
+      component: () => import("../user/ViewAllAppointment.vue"),
+      meta: {
+        showNavbar: false,
+      },
+    },
+    {
+      path: "/UserFAQ",
+      name: "UserFAQ",
+      component: () => import("../user/UserFAQ.vue"),
       meta: {
         showNavbar: false,
       },

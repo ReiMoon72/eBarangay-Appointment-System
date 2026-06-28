@@ -13,9 +13,9 @@ const Back = () => {
   router.push("/userconfirmation");
 };
 
-const SubmitBtn = () =>{
-  router.push('/userdashboard')
-}
+const SubmitBtn = () => {
+  router.push("/userdashboard");
+};
 
 //Getting the Random Numbers
 
@@ -45,15 +45,21 @@ onMounted(() => {
         <b class="text-2xl">Appointment Confirm!!</b>
         <p class="text-smool">Your appointment has been successfully booked</p>
       </div>
-      <div class=" flex flex-col gap-3 text-center bg-green-950 p-5 rounded-sm">
+      <div class="flex flex-col gap-3 text-center bg-green-950 p-5 rounded-sm">
         <p>Your Reference Numbers</p>
-        <div class="border-2 border-green-700 w-fit p-2 text-center flex items-center m-auto">
+        <div
+          class="border-2 border-green-700 w-fit p-2 text-center flex items-center m-auto"
+        >
           <p class="text-2xl">{{ referenceNumbers }} - {{ NumberReference }}</p>
         </div>
         <div>
           <p>
             Please use this reference number for any <br />
             inquires or when contacting the barangray office.
+          </p>
+          <p>
+            <b>Before You Leave</b> Please Take a Screenshot of you reference
+            number. Thank you!
           </p>
         </div>
       </div>
