@@ -2,9 +2,9 @@
 import { useRouter } from "vue-router";
 import { useAuthStore } from "../store/authentication.js";
 import UserNavbar from "../components/UserNavbar.vue";
-import { Calendar, Check, Clock, File } from "@lucide/vue";
+import { Calendar, Check, Clock, File, User } from "@lucide/vue";
 import { ref, onMounted } from "vue";
-import { AppointmentFetch } from "../services/url.js";
+import { AppointmentFetch, DeleleAppointUser } from "../services/url.js";
 
 const router = useRouter();
 const authStore = useAuthStore();
@@ -37,6 +37,7 @@ onMounted(async () => {
 
     if (response.data && Array.isArray(response.data.data)) {
       appointments.value = response.data.data;
+
     } else {
       appointments.value = [];
       error.value = "Invalid data format";
@@ -50,10 +51,34 @@ onMounted(async () => {
   }
 });
 
-//FOr viewing the My Appointment 
-const ViewAppointment = () =>{
-  router.push({ name: 'ViewAppointment'})
-}
+//Deleting Appointmetns
+const DeleteUserAppointment = async (UserAppointID) => {
+  try {
+    if (!confirm("Are you sure you want to delete this Appointment?")) {
+      return;
+    }
+
+    const response = await DeleleAppointUser(UserAppointID);
+
+    appointments.value = appointments.value.filter(
+      (app) => app.UserAppointID !== UserAppointID,
+    );
+    alert("✅ Appointment cancelled successfully!");
+  } catch (error) {
+    console.error(error);
+    alert("❌ Failed to cancel appointment");
+  }
+};
+
+//For viewing the My Appointment
+const ViewAppointment = () => {
+  router.push({ name: "ViewAppointment" });
+};
+
+//For Rescheduling
+const RescheduleBtn = () => {
+  router.push({ name: "Reschedule" });
+};
 </script>
 
 <template>
@@ -154,11 +179,13 @@ const ViewAppointment = () =>{
           >
             <button
               class="bg-blue-900 text-white p-1 rounded-sm w-40 cursor-pointer md:w-30"
+              @click="RescheduleBtn"
             >
               Reschedule
             </button>
             <button
               class="bg-red-900 text-white p-1 rounded-sm w-40 cursor-pointer"
+              @click="DeleteUserAppointment(appointment.UserAppointID)"
             >
               Cancel Appointment
             </button>

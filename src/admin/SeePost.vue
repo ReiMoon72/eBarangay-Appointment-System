@@ -1,9 +1,8 @@
 <script setup>
-import { ref } from 'vue';
 
 </script>
 
 <template>
 
-
+    <p>hello See post</p>
 </template>

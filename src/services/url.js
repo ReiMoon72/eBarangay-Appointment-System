@@ -20,13 +20,24 @@ const createUser = axios.create({
 
 //For fetch the latest Appointment by the user
 const AppointmentFetch = axios.create({
-  baseURL: '/api/userdashboard'
-})
+  baseURL: "/api/userdashboard",
+});
 
 //Fetch ALL of the appointment of the user
 const AppointmentGetAll = axios.create({
-  baseURL: '/api/viewappoiintment'
-})
+  baseURL: "/api/viewappoiintment",
+});
+
+//For Reschdule the user
+const ReschduleUserAppint = axios.create({
+  baseURL: "/api",
+});
+
+//For Deleting Appointment
+const DeletingUserAppointment = axios.create({
+  baseURL: "/api",
+});
+
 
 //For next one, if it was not showing plese add the variable to addTokenInterceptor, make it and add the variable inside of it and it will show the text for sure.
 
@@ -56,9 +67,25 @@ const addTokenInterceptor = (axiosInstance) => {
 
 // APPLY INTERCEPTOR TO ALL INSTANCES THAT NEED IT
 addTokenInterceptor(AppointmentFetch);
-addTokenInterceptor(UserServicesAPi); 
+addTokenInterceptor(UserServicesAPi);
 addTokenInterceptor(createUser);
 addTokenInterceptor(AppointmentGetAll);
+addTokenInterceptor(ReschduleUserAppint);
+addTokenInterceptor(DeletingUserAppointment)
 
-export { api, AppointmentFetch, UserServicesAPi, fetchAppoint, createUser, AppointmentGetAll };
+//For Deleting Appointments
+export const DeleleAppointUser  = (UserAppointID) => {
+  return DeletingUserAppointment.delete(`/userdashboard/${UserAppointID}`);
+};
+
+export {
+  api,
+  AppointmentFetch,
+  UserServicesAPi,
+  fetchAppoint,
+  createUser,
+  AppointmentGetAll,
+  ReschduleUserAppint,
+};
+
 export default api;

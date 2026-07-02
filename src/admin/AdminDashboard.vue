@@ -1,21 +1,18 @@
 <script setup>
-import { useRouter } from 'vue-router';
-import { useAuthStore }  from "../store/authentication";
+import { useRouter } from "vue-router";
+import { useAuthStore } from "../store/authentication";
+import Adminnavbar from "../admin-layout/Adminnavbar.vue";
 
 const authStore = useAuthStore();
 const router = useRouter();
-
-const BackInHome = () =>{
-    router.push({ name: "Home"})
-}
-
 </script>
 
 <template>
-
-    <h1>Hello Admin, {{ authStore.user?.Name }}</h1>
-
-    <button class=" bg-blue-950 p-2 text-white" @click="BackInHome">
-        Log Out
-    </button>
+  <header class="font-inter">
+    <div class="bg-graybg text-white p-6">
+      <h1>
+        Welcome back <span class=" font-bold">{{ authStore.user?.name }}</span>
+      </h1>
+    </div>
+  </header>
 </template>

@@ -69,25 +69,9 @@ const router = createRouter({
       },
     },
     {
-      path: "/admin",
-      name: "AdminLogin",
-      component: () => import("../pages/AdminRole.vue"),
-      meta: {
-        showNavbar: false,
-      },
-    },
-    {
       path: "/userdashboard",
       name: "UserDashboard",
       component: () => import("../user/UserDashBoard.vue"),
-      meta: {
-        showNavbar: false,
-      },
-    },
-    {
-      path: "/admindashboard",
-      name: "AdminDashboard",
-      component: () => import("../admin/AdminDashboard.vue"),
       meta: {
         showNavbar: false,
       },
@@ -155,6 +139,64 @@ const router = createRouter({
       meta: {
         showNavbar: false,
       },
+    },
+    {
+      path: "/reschedule",
+      name: "Reschedule",
+      component: () => import("../user/Reschedule.vue"),
+      meta: {
+        showNavbar: false,
+      },
+    },
+    {
+      path: "/admin",
+      name: "AdminMain",
+      component: () => import("../admin-main.vue"),
+      meta: {
+        showNavbar: false,
+      },
+      children: [
+        {
+          path: "",
+          name: "AdminDashboard",
+          component: () => import("../admin/AdminDashboard.vue"),
+          meta: {
+            showNavbar: false,
+          },
+        },
+        {
+          path: "appointment",
+          name: "AdminAppointment",
+          component: () => import("../admin/AdminAppointment.vue"),
+          meta: {
+            showNavbar: false,
+          },
+        },
+        {
+          path: "settings",
+          name: "AdminSettings",
+          component: () => import("../admin-layout/AdminSettings.vue"),
+          meta: {
+            showNavbar: false,
+          },
+        },
+        {
+          path: "announcement-post",
+          name: "AnnouncmentPost",
+          component: () => import("../admin/CreateAnnouncement.vue"),
+          meta: {
+            showNavbar: false,
+          },
+        },
+        {
+          path: "see-announcement",
+          name: "SeeAnnouncement",
+          component: () => import("../admin/SeePost.vue"),
+          meta: {
+            showNavbar: false,
+          },
+        },
+      ],
     },
   ],
 });
