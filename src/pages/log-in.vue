@@ -26,8 +26,11 @@ const AdminLogin = () => {
   router.push({ name: "AdminLogin" });
 };
 
-//Log in
+const ForgotPasswords = () => {
+  router.push("/forgotpassword")
+}
 
+//Log in
 const loginhandles = async () => {
   try {
     const loginProceddurre = await auth.login(
@@ -37,8 +40,8 @@ const loginhandles = async () => {
 
     const user = loginProceddurre.user;
 
-    if(user.role === "admin") {
-      router.push({ name: 'AdminDashboard'});
+    if (user.role === "admin") {
+      router.push({ name: "AdminDashboard" });
     } else {
       router.push({ name: "UserDashboard" });
     }
@@ -99,7 +102,9 @@ const loginhandles = async () => {
           />
         </div>
         <div>
-          <button class="cursor-pointer text-blue-700">Forget Password</button>
+          <button class="cursor-pointer text-blue-700" @click="ForgotPasswords">
+            Forget Password
+          </button>
         </div>
         <div>
           <button class="cursor-pointer text-blue-700" @click="AdminLogin">

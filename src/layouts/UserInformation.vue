@@ -104,6 +104,7 @@ const Back = () => {
               class="border-2 border-grayewan dark:border-white rounded-sm p-1"
               v-model="phoneNumber"
               placeholder="09123456789"
+              maxlength="11"
             />
           </div>
           <div class="flex flex-col">

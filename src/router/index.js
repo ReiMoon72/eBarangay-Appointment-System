@@ -41,7 +41,7 @@ const router = createRouter({
       name: "ForgotPassword",
       component: () => import("../pages/ForgotPassword.vue"),
       meta: {
-        showNavbar: true,
+        showNavbar: false,
       },
     },
     {
@@ -154,6 +154,7 @@ const router = createRouter({
       component: () => import("../admin-main.vue"),
       meta: {
         showNavbar: false,
+        ShowFooter: false,
       },
       children: [
         {
@@ -162,6 +163,7 @@ const router = createRouter({
           component: () => import("../admin/AdminDashboard.vue"),
           meta: {
             showNavbar: false,
+            ShowFooter: false,
           },
         },
         {
@@ -170,6 +172,7 @@ const router = createRouter({
           component: () => import("../admin/AdminAppointment.vue"),
           meta: {
             showNavbar: false,
+            ShowFooter: false,
           },
         },
         {
@@ -178,6 +181,7 @@ const router = createRouter({
           component: () => import("../admin-layout/AdminSettings.vue"),
           meta: {
             showNavbar: false,
+            ShowFooter: false,
           },
         },
         {
@@ -186,6 +190,7 @@ const router = createRouter({
           component: () => import("../admin/CreateAnnouncement.vue"),
           meta: {
             showNavbar: false,
+            ShowFooter: false,
           },
         },
         {
@@ -194,6 +199,7 @@ const router = createRouter({
           component: () => import("../admin/SeePost.vue"),
           meta: {
             showNavbar: false,
+            ShowFooter: false,
           },
         },
       ],

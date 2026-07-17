@@ -4,14 +4,20 @@ import { useAuthStore } from "../store/authentication.js";
 import UserNavbar from "../components/UserNavbar.vue";
 import { Calendar, Check, Clock, File, User } from "@lucide/vue";
 import { ref, onMounted } from "vue";
-import { AppointmentFetch, DeleleAppointUser } from "../services/url.js";
+import {
+  AppointmentFetch,
+  DeleleAppointUser,
+  AnnouncementFetch,
+} from "../services/url.js";
 
 const router = useRouter();
 const authStore = useAuthStore();
 
 //Store the appointment
 const appointments = ref([]);
+const annnouncements = ref([]);
 const isLoading = ref(false);
+const isAnnouncementLoading = ref(false);
 const error = ref(null);
 
 //Formating the Date and Time
@@ -27,6 +33,7 @@ const formatTime = (time) => {
   });
 };
 
+//Getting the User Appointments
 onMounted(async () => {
   //This Prevent Multiple Calls
   if (isLoading.value) return;
@@ -37,7 +44,6 @@ onMounted(async () => {
 
     if (response.data && Array.isArray(response.data.data)) {
       appointments.value = response.data.data;
-
     } else {
       appointments.value = [];
       error.value = "Invalid data format";
@@ -79,6 +85,33 @@ const ViewAppointment = () => {
 const RescheduleBtn = () => {
   router.push({ name: "Reschedule" });
 };
+
+//For Getting the Announcements
+onMounted(async () => {
+  //Prevent Multiple Calls in the backend
+  if (isAnnouncementLoading.value) return;
+
+  isAnnouncementLoading.value = true;
+  try {
+    const getAnnouncementData = await AnnouncementFetch();
+
+    if (
+      getAnnouncementData.data &&
+      Array.isArray(getAnnouncementData.data.data)
+    ) {
+      annnouncements.value = getAnnouncementData.data.data;
+    } else {
+      annnouncements.value = [];
+      error.value = "There was Error";
+    }
+  } catch (error) {
+    console.error("There was a Error", error);
+    annnouncements.value = [];
+    error.value = error.message;
+  } finally {
+    isAnnouncementLoading.value = false;
+  }
+});
 </script>
 
 <template>
@@ -165,6 +198,7 @@ const RescheduleBtn = () => {
             View all
           </button>
         </div>
+        <hr />
         <div
           class="flex flex-col gap-3 p-2"
           v-for="appointment in appointments"
@@ -204,6 +238,17 @@ const RescheduleBtn = () => {
             >
               View all
             </button>
+          </div>
+          <hr />
+          <div
+            class="flex flex-col gap-1 p-2"
+            v-for="annnouncement in annnouncements"
+            :key="annnouncement.AnnouncementID"
+          >
+            <div>
+              <b>{{ annnouncement.AnnouncementTitle }}</b>
+              <p>{{ annnouncement.AnnouncementMessage }}</p>
+            </div>
           </div>
         </div>
       </div>

@@ -38,6 +38,40 @@ const DeletingUserAppointment = axios.create({
   baseURL: "/api",
 });
 
+//Fetch For the Admin URL
+const FetchAdminAppointment = axios.create({
+  baseURL: "/api/admin/appointment",
+});
+
+//For change the user Status
+const ChangeStatusUser = axios.create({
+  baseURL: "/api",
+});
+
+//Admin Posting Announcement
+const AnnouncementPosting = axios.create({
+  baseURL: "/api",
+});
+
+//Getting the announcemetn by admin side
+const AnnouncementGetAdmin = axios.create({
+  baseURL: "/api/admin/see-announcement",
+});
+
+//Change Admin Password
+const ChangeAdminPassword = axios.create({
+  baseURL: "/api",
+});
+
+//Change Password/Forgot Password
+const ForgetPassword = axios.create({
+  baseURL: "/api",
+});
+
+//For the Announcement API URL
+const AnnouncementFetch = axios.create({
+  baseURL: "/api/userdashboard",
+});
 
 //For next one, if it was not showing plese add the variable to addTokenInterceptor, make it and add the variable inside of it and it will show the text for sure.
 
@@ -58,7 +92,7 @@ const addTokenInterceptor = (axiosInstance) => {
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     } else {
-      console.log("  - ❌ WARNING: No token found!");
+      console.log("  - WARNING: No token found!");
     }
 
     return config;
@@ -71,10 +105,17 @@ addTokenInterceptor(UserServicesAPi);
 addTokenInterceptor(createUser);
 addTokenInterceptor(AppointmentGetAll);
 addTokenInterceptor(ReschduleUserAppint);
-addTokenInterceptor(DeletingUserAppointment)
+addTokenInterceptor(DeletingUserAppointment);
+addTokenInterceptor(FetchAdminAppointment);
+addTokenInterceptor(ChangeStatusUser);
+addTokenInterceptor(AnnouncementPosting);
+addTokenInterceptor(AnnouncementGetAdmin);
+addTokenInterceptor(ChangeAdminPassword);
+addTokenInterceptor(ForgetPassword);
+addTokenInterceptor(AnnouncementFetch);
 
 //For Deleting Appointments
-export const DeleleAppointUser  = (UserAppointID) => {
+export const DeleleAppointUser = (UserAppointID) => {
   return DeletingUserAppointment.delete(`/userdashboard/${UserAppointID}`);
 };
 
@@ -86,6 +127,13 @@ export {
   createUser,
   AppointmentGetAll,
   ReschduleUserAppint,
+  FetchAdminAppointment,
+  ChangeStatusUser,
+  AnnouncementPosting,
+  AnnouncementGetAdmin,
+  ChangeAdminPassword,
+  ForgetPassword,
+  AnnouncementFetch,
 };
 
 export default api;

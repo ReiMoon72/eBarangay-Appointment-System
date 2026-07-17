@@ -6,7 +6,7 @@ import { RouterView } from "vue-router";
 </script>
 
 <template>
-  <div class="flex">
+  <div class="flex ">
     <Adminnavbar />
     <main class="flex-1 overflow-auto">
       <RouterView />
