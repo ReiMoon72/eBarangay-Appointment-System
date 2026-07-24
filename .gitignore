@@ -29,4 +29,3 @@ dist-ssr
 
 # Backend .env
 /backend/.env
-/sql/
