@@ -45,6 +45,14 @@ const router = createRouter({
       },
     },
     {
+      path: "/announcement-board",
+      name: "AnnouncementBoard",
+      component: () => import("../layouts/AnnouncementBoard.vue"),
+      meta: {
+        showNavbar: false,
+      },
+    },
+    {
       path: "/emailconfirmation",
       name: "emailconfirmation",
       component: () => import("../pages/EmailConfirmation.vue"),

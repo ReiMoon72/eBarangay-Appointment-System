@@ -1,0 +1,1 @@
+SELECT UserID, Email, HashPassword FROM UserStoring WHERE Email = 'rsa563820@gmail.com'

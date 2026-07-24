@@ -87,7 +87,6 @@ const BackHome = (id) => {
       >
         <router-link active-class=" underline" to="/">Home</router-link>
         <button class="cursor-pointer" @click="FAQscroll('FAQS')">FAQ</button>
-        <button>How It Work</button>
         <router-link active-class=" underline" :to="{ name: 'Contact' }"
           >Contact</router-link
         >

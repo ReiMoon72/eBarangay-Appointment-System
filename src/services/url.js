@@ -70,7 +70,15 @@ const ForgetPassword = axios.create({
 
 //For the Announcement API URL
 const AnnouncementFetch = axios.create({
-  baseURL: "/api/userdashboard",
+  baseURL: "/api/announcement/userdashboard",
+});
+
+const AnnouncementFetchUserSide = axios.create({
+  baseURL: "/api/announcement-board",
+});
+
+const SendImial = axios.create({
+  baseURL: "/api",
 });
 
 //For next one, if it was not showing plese add the variable to addTokenInterceptor, make it and add the variable inside of it and it will show the text for sure.
@@ -113,6 +121,8 @@ addTokenInterceptor(AnnouncementGetAdmin);
 addTokenInterceptor(ChangeAdminPassword);
 addTokenInterceptor(ForgetPassword);
 addTokenInterceptor(AnnouncementFetch);
+addTokenInterceptor(AnnouncementFetchUserSide);
+addTokenInterceptor(SendImial)
 
 //For Deleting Appointments
 export const DeleleAppointUser = (UserAppointID) => {
@@ -134,6 +144,8 @@ export {
   ChangeAdminPassword,
   ForgetPassword,
   AnnouncementFetch,
+  AnnouncementFetchUserSide,
+  SendImial
 };
 
 export default api;

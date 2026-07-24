@@ -15,7 +15,7 @@ const authStore = useAuthStore();
 
 //Store the appointment
 const appointments = ref([]);
-const annnouncements = ref([]);
+const AnnouncementGets = ref([]);
 const isLoading = ref(false);
 const isAnnouncementLoading = ref(false);
 const error = ref(null);
@@ -86,6 +86,11 @@ const RescheduleBtn = () => {
   router.push({ name: "Reschedule" });
 };
 
+//For the announcement baord
+const AnnouncementBtn = () => {
+  router.push("/announcement-board")
+}
+
 //For Getting the Announcements
 onMounted(async () => {
   //Prevent Multiple Calls in the backend
@@ -99,15 +104,15 @@ onMounted(async () => {
       getAnnouncementData.data &&
       Array.isArray(getAnnouncementData.data.data)
     ) {
-      annnouncements.value = getAnnouncementData.data.data;
+      AnnouncementGets.value = getAnnouncementData.data.data;
     } else {
-      annnouncements.value = [];
+      AnnouncementGets.value = [];
       error.value = "There was Error";
     }
   } catch (error) {
-    console.error("There was a Error", error);
-    annnouncements.value = [];
-    error.value = error.message;
+    console.log("There was a Error", error);
+    AnnouncementGets.value = [];
+    error.value = error.value;
   } finally {
     isAnnouncementLoading.value = false;
   }
@@ -241,14 +246,25 @@ onMounted(async () => {
           </div>
           <hr />
           <div
-            class="flex flex-col gap-1 p-2"
-            v-for="annnouncement in annnouncements"
-            :key="annnouncement.AnnouncementID"
+            v-if="isAnnouncementLoading"
+            class="flex items-center justify-center"
           >
-            <div>
-              <b>{{ annnouncement.AnnouncementTitle }}</b>
-              <p>{{ annnouncement.AnnouncementMessage }}</p>
-            </div>
+            <p>Announcement Loading...</p>
+          </div>
+          <div
+            v-else-if="AnnouncementGets.length === 0"
+            class="flex items-center justify-center"
+          >
+            <p>No Announcment Found...</p>
+          </div>
+          <div
+            class="flex flex-col gap-1 p-2"
+            v-else
+            v-for="AnnouncementGet in AnnouncementGets"
+            :key="AnnouncementGet.AnnouncementID"
+          >
+            <b>{{ AnnouncementGet.AnnouncementTitle }}</b>
+            <p>{{ AnnouncementGet.AnnouncementMessage }}</p>
           </div>
         </div>
       </div>
