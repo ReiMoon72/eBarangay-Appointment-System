@@ -11,9 +11,8 @@ const config = {
   database: process.env.DB_DATABASE,
 
   options: {
-    trustedConnection: true,
+    encrypt: true,
     trustServerCertificate: false,
-    encrypt: false,
   },
 };
 
