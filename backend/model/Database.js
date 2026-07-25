@@ -5,9 +5,9 @@ dotenv.config();
 
 const config = {
   user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
+  password: process.env.DB_PASSWORD ? "Loaded" : "Missing",
   server: process.env.DB_SERVER,
-  port: 1433,
+  port: parseInt(process.env.DB_PORT, 10),
   database: process.env.DB_DATABASE,
 
   options: {

@@ -1,2 +1,0 @@
-DELETE FROM UserStoring 
-WHERE UserID = 3
