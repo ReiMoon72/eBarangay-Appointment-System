@@ -12,7 +12,7 @@ const config = {
 
   options: {
     trustedConnection: true,
-    trustServerCertificate: true,
+    trustServerCertificate: false,
     encrypt: false,
   },
 };
